@@ -1,4 +1,4 @@
-import { useMapContext } from "@/contexts/MapContext";
+import { MapObjectState, useMapContext } from "@/contexts/MapContext";
 import { useEffect, useRef } from "react";
 
 import NavigationArrowImage from "@/images/NavigationArrow.png";
@@ -211,9 +211,10 @@ const Map = () => {
       });
       mapDrawRef.current = mapBoxDrawInstance;
 
-      setMapObject((prev) => ({
+      setMapObject((prev: MapObjectState) => ({
         ...prev,
         map: mapInstance,
+        mapBoxDraw: mapBoxDrawInstance,
       }));
 
       mapInstance.on("load", () => {
@@ -253,7 +254,9 @@ const Map = () => {
 
   return (
     <div className="p-2 h-full">
-      <div ref={mapRef} id="map" className="h-full rounded-xl"></div>
+      <div ref={mapRef} id="map" className="h-full rounded-xl">
+        
+      </div>
     </div>
   );
 };

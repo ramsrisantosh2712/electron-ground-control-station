@@ -20,7 +20,6 @@ const StatusBar = () => {
   const { droneStatus } = useDroneStatusContext();
   const { sensorStatusToggle } = useSideBarContext();
   return (
-    // <div className="row-span-1 px-3 my-3 py-3 bg-[#1C1C1E] rounded-xl flex justify-between">
     <div className="bg-[#1C1C1E] flex justify-between p-3 m-2 items-center rounded-xl">
       {/* ARM + MODE + CONNECTION Status */}
       <div className="rounded-xl flex gap-x-3">
