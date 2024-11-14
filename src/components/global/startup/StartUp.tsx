@@ -3,16 +3,22 @@ import { Fragment, useEffect, useState } from "react";
 
 import ICGImage from "@/images/ICG_Image.png";
 import ZebuLogo from "@/images/ZEBU_LOGO.png";
-import { useDroneStatusContext } from "@/contexts/DroneStatusContext";
+import { useDroneUtilsContext } from "@/contexts/DroneStatusContext";
+import { getSocket } from "@/lib/utils";
 
 const StartUp = () => {
   const [showIGGImage, setShowIGGImage] = useState(true);
+  const socket = getSocket();
 
-  const { droneStatus } = useDroneStatusContext();
+  const { droneStatus, setDroneStatus } = useDroneUtilsContext();
 
   // WIP: Connect the backend
   const callBackEnd = () => {
-    console.log("Connect To Th backend");
+    // setConnectButton(false)
+    setDroneStatus({ ...droneStatus, connectButton: false });
+
+    socket.emit("drone_status");
+    socket.emit("start_video_stream");
   };
 
   useEffect(() => {
@@ -42,7 +48,7 @@ const StartUp = () => {
               <div className="fixed inset-0 bg-white" />
             </Transition.Child>
 
-            <div className="fixed inset-0 overflow-y-auto">
+            <div className="fixed inset-0 overflow-hidden">
               <div className="flex min-h-full items-center justify-center p-4 text-center">
                 <Transition.Child
                   as={Fragment}

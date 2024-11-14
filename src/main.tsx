@@ -2,16 +2,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { SideBarContext } from "./contexts/SideBarContext.tsx";
-import { DroneStatusContext } from "./contexts/DroneStatusContext.tsx";
+import { DroneUtilsContext } from "./contexts/DroneStatusContext.tsx";
 import { MapContext } from "./contexts/MapContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MapContext>
-    <DroneStatusContext>
+    <DroneUtilsContext>
       <SideBarContext>
         <App />
       </SideBarContext>
-    </DroneStatusContext>
+    </DroneUtilsContext>
   </MapContext>
 );
 

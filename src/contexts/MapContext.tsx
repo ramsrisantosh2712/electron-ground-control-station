@@ -1,5 +1,6 @@
 import { createContext, RefObject, useContext, useRef, useState } from "react";
 import { MapContextType } from "./types";
+import MapboxDraw from "@mapbox/mapbox-gl-draw";
 
 type Props = {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ export type MapMarkersState = {
 export type MapObjectState = {
   map: mapboxgl.Map | null;
   miniMap: mapboxgl.Map | null;
-  mapBoxDraw: mapboxgl.Map | null;
+  mapBoxDraw: MapboxDraw | null;
 };
 
 const AppContext = createContext<MapContextType | undefined>(undefined);
@@ -30,9 +31,11 @@ export const MapContext = ({ children }: Props) => {
     mapBoxDraw: null,
   });
 
+  const wayPointRef = useRef<(event: any) => void>(null);
+
   return (
     <AppContext.Provider
-      value={{ markers, setMarkers, mapObject, setMapObject }}
+      value={{ markers, setMarkers, mapObject, setMapObject, wayPointRef }}
     >
       {children}
     </AppContext.Provider>

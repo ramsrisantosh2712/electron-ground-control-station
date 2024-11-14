@@ -1,4 +1,4 @@
-import { useDroneStatusContext } from "@/contexts/DroneStatusContext";
+import { useDroneUtilsContext } from "@/contexts/DroneStatusContext";
 import { GoDotFill } from "react-icons/go";
 import ICGImage from "@/images/ICG_Image.png";
 import ZebuLogo from "@/images/ZEBU_LOGO.png";
@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import { useMapContext } from "@/contexts/MapContext";
 
 const StatusBar = () => {
-  const { droneStatus } = useDroneStatusContext();
+  const { droneStatus } = useDroneUtilsContext();
   const { sensorStatusToggle } = useSideBarContext();
   return (
     <div className="bg-[#1C1C1E] flex justify-between p-3 m-2 items-center rounded-xl">

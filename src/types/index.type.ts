@@ -155,3 +155,145 @@ export type DroneStatusState =
 
     }
 
+export type PlanMissionState = {
+
+    isActive: boolean,
+    missionOpen: string,
+    clearMission: boolean,
+
+    initialWayPointAltitude: number,
+    savedInitialWayPointAltitude: number,
+
+    reposition: {
+        isActive: boolean,
+        coordinates: Array<number>,
+        altitude: number,
+        marker: mapboxgl.Marker | null,
+    },
+
+    modifyMission: {
+        type: string | null,
+        id: number | -1
+    },
+
+    takeoff: {
+        coordinates: Array<number>,
+        marker: mapboxgl.Marker | null,
+
+        modifyTakeoff: {
+            marker: mapboxgl.Marker | null
+        }
+    },
+
+    wayPoint: {
+        wayPointActive: boolean,
+
+        coordinates: Array<number | boolean>,
+        markers: Array<mapboxgl.Marker>,
+        modifyWaypoint: {
+            marker: mapboxgl.Marker | null,
+            id: number | -1
+        }
+    },
+
+    roi: {
+        start: boolean,
+        startROIIds: Array<number>,
+        cancelROIIds: Array<number>,
+        roiActive: boolean,
+        coordinates: Array<Array<number>>,
+        markers: Array<mapboxgl.Marker>,
+        roiCount: number,
+        roiIndex: Array<Array<number>>,
+
+        modifyRoi: {
+            marker: mapboxgl.Marker | null,
+            id: number | -1
+        }
+    },
+
+    survey: {
+        surveyActive: boolean,
+
+        surveyRotateWayPoints: boolean,
+        // WIP: GET THE TYPE OF SURVEY POLYGON
+        surveyPolygon: null,
+        markers: Array<mapboxgl.Marker>,
+        coordinates: Array<Array<number>>,
+        surveyConfig: {
+            altitude: number,
+            spacing: number,
+            angle: number,
+        },
+    },
+
+    rtl: {
+        coordinates: Array<number>,
+        marker: mapboxgl.Marker | null,
+    },
+
+    fileActive: boolean,
+
+    missionStatistics: {
+        distance: number,
+        timeTaken: string,
+        maxTelemDist: number,
+        totalArea: number
+    },
+
+    downloadedMission: {
+        status: string,
+        mission_count: number,
+        takeoff: Array<number>,
+        waypoint: Array<Array<boolean | number>>,
+        roi: Array<Array<number>>,
+        roiIndex: Array<Array<number>>,
+        rtl: Array<number>
+    }
+}
+
+export type HistoryMissionState = {
+    isActive: boolean,
+
+    selectedMission: {
+        id: number | -1,
+        map: mapboxgl.Map | null,
+        mission_count: number,
+        takeoff: Array<number>,
+        waypoint: Array<Array<number | boolean>>,
+        roi: Array<number>,
+        roiIndex: Array<Array<number>>,
+        rtl: Array<number>,
+        created_on: string,
+        filename: string,
+    },
+    missionCount: number,
+    missions: [],
+}
+
+export class MarkerClass {
+    leftMarker: mapboxgl.Marker | null;
+    rightMarker: mapboxgl.Marker | null;
+    currentMarker: mapboxgl.Marker | null;
+    leftSourceId: string | null;
+    rightSourceId: string | null;
+
+    constructor(
+        leftMarker: mapboxgl.Marker | null = null,
+        rightMarker: mapboxgl.Marker | null = null,
+        currentMarker: mapboxgl.Marker | null = null,
+        leftSourceId: string | null = null,
+        rightSourceId: string | null = null
+    ) {
+        this.leftMarker = leftMarker;
+        this.rightMarker = rightMarker;
+        this.currentMarker = currentMarker;
+        this.leftSourceId = leftSourceId;
+        this.rightSourceId = rightSourceId;
+    }
+}
+
+export type RepositionStatusState = {
+    isActive: boolean,
+    altitude: number,
+}
