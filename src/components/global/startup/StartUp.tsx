@@ -12,7 +12,6 @@ const StartUp = () => {
 
   const { droneStatus, setDroneStatus } = useDroneUtilsContext();
 
-  // WIP: Connect the backend
   const callBackEnd = () => {
     // setConnectButton(false)
     setDroneStatus({ ...droneStatus, connectButton: false });

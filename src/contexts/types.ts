@@ -47,4 +47,5 @@ export type MapContextType = {
     setMapObject: (mapObject: MapObjectState) => void;
 
     wayPointRef: React.MutableRefObject<((event: any) => void) | null>;
+    roiRef: React.MutableRefObject<((event: any) => void) | null>;
 }

@@ -1,5 +1,12 @@
-import { togglePlanAMission } from "@/components/utils/map";
+import {
+  openFileBox,
+  planSurvey,
+  planTakeOff,
+  togglePlanAMission,
+  useTogglePlanAMission,
+} from "@/components/utils/map";
 import { useDroneUtilsContext } from "@/contexts/DroneStatusContext";
+import { useMapContext } from "@/contexts/MapContext";
 import {
   AirplaneLanding,
   AirplaneTakeoff,
@@ -13,13 +20,102 @@ import {
   UploadSimple,
   X,
 } from "@phosphor-icons/react";
-import { useState } from "react";
 import { GoHome } from "react-icons/go";
 
 const MissionOperations = () => {
   //  WIP: Complete all the functions
-  const { planMission, droneStatus, takeOffObject, rTLObject } =
-    useDroneUtilsContext();
+  const {
+    planMission,
+    droneStatus,
+    takeOffObject,
+    rTLObject,
+    takeOffStatus,
+    setTakeOffStatus,
+    emptyPlanMissionState,
+    historyMissions,
+    roiObject,
+    setDroneStatus,
+    setHistoryMissions,
+    setPlanMission,
+    wayPointsObject,
+  } = useDroneUtilsContext();
+
+  const { mapObject, markers, roiRef, setMapObject, setMarkers, wayPointRef } =
+    useMapContext();
+
+  const handleTakeOff = () => {
+    console.log("handleTakeOff");
+  };
+
+  const handleLandMode = () => {
+    console.log("handleLandMode");
+  };
+
+  const confirmLandMode = () => {
+    console.log("confirmLandMode");
+  };
+
+  const handleRTLMode = () => {
+    console.log("handleRTLMode");
+  };
+
+  const confirmRTLMode = () => {
+    console.log("confirmRTLMode");
+  };
+
+  const handleSmartRTLMode = () => {
+    console.log("handleSmartRTLMode");
+  };
+
+  const confirmSmartRTLMode = () => {
+    console.log("confirmSmartRTLMode");
+  };
+
+  const uploadMission = () => {
+    console.log("uploadMission");
+  };
+
+  const downloadMission = () => {
+    console.log("downloadMission");
+  };
+
+  const clearMission = () => {
+    console.log("clearMission");
+  };
+
+  const toggleWayPoint = () => {
+    console.log("toggleWayPoint");
+  };
+
+  const handleROI = () => {
+    console.log("handleROI");
+  };
+
+  const planRTL = () => {
+    console.log("planRTL");
+  };
+
+  const flyMission = () => {
+    console.log("flyMission");
+  };
+
+  const toggleTakeOff = () => {
+    console.log("toggleTakeOff");
+  };
+
+  const togglePlanAMission = () => {
+    // useTogglePlanAMission(
+    //   takeOffObject,
+    //   wayPointsObject,
+    //   roiObject,
+    //   rTLObject,
+    //   setPlanMission,
+    //   emptyPlanMissionState,
+    //   mapObject
+    // );
+    useTogglePlanAMission()
+    // useTogglePlanAMission();
+  };
 
   return (
     <>
@@ -79,7 +175,7 @@ const MissionOperations = () => {
                 } flex flex-col cursor-pointer justify-center items-center my-1 p-0.5`}
                 onClick={() => {
                   if (planMission.survey.surveyActive === false) {
-                    planMissionTakeOff();
+                    planTakeOff();
                   } else {
                   }
                 }}

@@ -32,10 +32,11 @@ export const MapContext = ({ children }: Props) => {
   });
 
   const wayPointRef = useRef<(event: any) => void>(null);
+  const roiRef = useRef<(event: any) => void>(null);
 
   return (
     <AppContext.Provider
-      value={{ markers, setMarkers, mapObject, setMapObject, wayPointRef }}
+      value={{ markers, setMarkers, mapObject, setMapObject, wayPointRef, roiRef }}
     >
       {children}
     </AppContext.Provider>

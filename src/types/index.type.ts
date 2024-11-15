@@ -188,7 +188,7 @@ export type PlanMissionState = {
     wayPoint: {
         wayPointActive: boolean,
 
-        coordinates: Array<number | boolean>,
+        coordinates: Array<Array<number | boolean>>,
         markers: Array<mapboxgl.Marker>,
         modifyWaypoint: {
             marker: mapboxgl.Marker | null,
@@ -272,16 +272,16 @@ export type HistoryMissionState = {
 }
 
 export class MarkerClass {
-    leftMarker: mapboxgl.Marker | null;
-    rightMarker: mapboxgl.Marker | null;
-    currentMarker: mapboxgl.Marker | null;
+    leftMarker: mapboxgl.Marker | undefined | null;
+    rightMarker: mapboxgl.Marker | undefined | null;
+    currentMarker: mapboxgl.Marker | undefined | null;
     leftSourceId: string | null;
     rightSourceId: string | null;
 
     constructor(
-        leftMarker: mapboxgl.Marker | null = null,
-        rightMarker: mapboxgl.Marker | null = null,
-        currentMarker: mapboxgl.Marker | null = null,
+        leftMarker: mapboxgl.Marker | undefined | null = null,
+        rightMarker: mapboxgl.Marker | undefined | null = null,
+        currentMarker: mapboxgl.Marker | undefined | null = null,
         leftSourceId: string | null = null,
         rightSourceId: string | null = null
     ) {
